@@ -1,0 +1,97 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace WpfApp2
+{
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        //ЗАДАЧА N1
+        //Кнопка о программе
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+            MessageBox.Show("практическая работа N1. Даны катеты прямоуголького треугольника A & B, найти его гипотенузу и периметр Р");
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+            //Кнопка выхода
+            this.Close();//Выход из программы
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Сброс
+            zn1.Clear();
+            zn2.Clear();
+            Gipot.Clear();
+            Perim.Clear();
+            zn1.Focus();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            //Расчет
+            double x1, x2, x3, x4;
+            bool f1, f2;
+            f1 = double.TryParse(zn1.Text, out x1);
+            f2 = double.TryParse(zn2.Text, out x2);
+            if (f1 == true && f2 == true)
+            {
+                x3 = Math.Sqrt(x1 * x1 + x2 * x2);
+                x4 = x1 + x2 + x3;
+                Gipot.Text = Convert.ToString(x3);
+                Perim.Text = Convert.ToString(x4);
+            }
+            else MessageBox.Show("Пользователь,вы ошиблись. Числа введены некоректно. Прроверьте введеные вами числа!");
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("практическая работа N1 Дано целое число, большее 999. Используя одну операцию деления нацело и одну ооперацию взятия остатка от деления, найти цифру, соответствующую разрядусотен в записи этого числа.");
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            double a1, a2, a3;
+            bool f1;
+            f1=double.TryParse(ss1.Text, out a1);
+            if (f1 == true && a1 > 999)
+            {
+                a2 = a1 / 100 % 10;
+                a3 = Math.Round(a2 - 0, 1);
+                ss2.Text = Convert.ToString(a3);
+            }
+            else MessageBox.Show("введите правильные значения");
+            
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            ss1.Clear();
+            ss2.Clear();
+            ss1.Focus();
+        }
+    }
+}
